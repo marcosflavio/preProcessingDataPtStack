@@ -1,3 +1,4 @@
+# -*- coding: latin-1 -*-
 class Question:
 
     def __init__(self, title, post_id):

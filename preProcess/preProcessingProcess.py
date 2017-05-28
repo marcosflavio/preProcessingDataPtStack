@@ -5,7 +5,7 @@ class PreProcessing:
 
     def __init__(self, posts, textCleaner):
         self.posts = posts
-        self.questions = None
+        self.questions = []
         self.textCleaner = textCleaner
 
     def create_questions(self):
@@ -30,7 +30,7 @@ class PreProcessing:
     # removeSufPort
     def remove_sufix_portugues(self):
         for q in self.questions:
-            q.set_title(self.textCleaner.removeSufPort(q.get_title()))
+            q.set_title(self.textCleaner.removeSufPort(unicode(q.get_title())))
         return self.questions
 
     # removeAccent
