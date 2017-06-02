@@ -75,16 +75,16 @@ class TextCleaner(object):
         self.pt_stemmer = nltk.stem.RSLPStemmer()
         self.tokenizer = WhitespaceTokenizer()
         self.cached_stopwords = stopwords.words('portuguese')
-        self.symbols = [u"\"", u"'", u"!", u"?", u".", u",", u";", u">", u"_", u"<", u"-", u"[",
-                        u"]", u"{", u"}", u"/", u"\\", u"^", u"~", u"´",  u"`", u"``", u"\u2026",
-                        u":", u"(", u")", u"|", u"#", u"$", u"%", u"&", u"*", u"=", u"+", u"\u2013",
-                        u"\u201c", u"\u201d", u"\u300b\u300b", u"\u2019", u"\u2018", u"\u00b0",
-                        u"\u00ba", u"\u200b", u"\u00b7", u"\u2014", u"\u00bb", u"\u221a", u"\u00aa",
+        self.symbols = [u"\"", u"'", u"!", u"?", u".", u",", u";", u"_", u"-",
+                        u"/", u"\\", u"^", u"~", u"´",  u"`", u"``", u"\u2026",
+                        u":", u"(", u")", u"|", u"\u2013", u"\u201c", u"\u201d",
+                        u"\u300b\u300b", u"\u2019", u"\u2018", u"\u00b0", u"\u00ba",
+                        u"\u200b", u"\u00b7", u"\u2014", u"\u00bb", u"\u221a", u"\u00aa",
                         u"\ufe0f", u"\u2794", u"\u2192", u"\u00a8", u"\u2022", u"\u300a", u"\u00bf",
                         u"\u25a0", u"\u00af", u"\u22b3", u"\u2060", u"\u261b", u"\u00ad", u"\u00ab"]
         self.more_stopwords = ['ja', 'q', 'd', 'ai', 'desse', 'dessa', 'disso', 'nesse', 'nessa', 'nisso', 'esse', 'essa', 'isso', 'so', 'mt', 'vc', 'voce', 'ne', 'ta', 'to', 'pq',
                                'cade', 'kd', 'la', 'e', 'eh', 'dai', 'pra', 'vai', 'olha', 'pois', 'rt', 'retweeted',
-                               'fica', 'muito', 'muita', 'muitos', 'muitas', 'onde', 'mim', 'oi', 'ola', 'ate', 'como', 'faco', 'eu']
+                               'fica', 'muito', 'muita', 'muitos', 'muitas', 'onde', 'mim', 'oi', 'ola', 'ate', 'como', 'faço', 'eu']
         if use_unicode:
             self.accents = unicode_replace
         else:

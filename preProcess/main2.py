@@ -3,6 +3,10 @@
 from connectionFactory import MySqlConnector
 from portugueseProcess import TextCleaner
 from preProcessingProcess import PreProcessing
+import unicodecsv as csv
+
+header = ('title', 'post_id')
+
 mysql = MySqlConnector()
 
 mysql.create_connection("localhost", "root", "root", "ptstack")
@@ -22,19 +26,11 @@ preProcess.remove_symbols()
 preProcess.remove_stop_words()
 qs = preProcess.remove_sufix_portugues()
 
-mysql.create_connection("localhost", "root", "root", "ptstack")
-mysql.create_cursor()
-cursor = mysql.get_cursor()
-con = mysql.get_connection()
-for q in qs:
-    print q.get_title()
-    title = q.get_title()
-    id = q.get_post_id()
-    try:
-        sql = "INSERT INTO questions (title, post_id) VALUES ('" + title + "'," + str(id) + ")"
-        cursor.execute(sql)
-        con.commit()
-    except:
-        con.rollback()
-mysql.close_cursor()
-mysql.close_connection()
+with open('/home/marcos/pt_stack_data/questionsPreProcess.csv', 'w') as f:
+    writer = csv.writer(f, encoding='utf-8')
+    writer.writerow(header)
+    for q in qs:
+        title = q.get_title()
+        id = q.get_post_id()
+        line = (title, id)
+        writer.writerow(line)
